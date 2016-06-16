@@ -8,9 +8,9 @@
     "start": "node .",
     "lint": "eslint src/**/*.js",
     "cover": "npm run cover-unit && npm run cover-bdd && npm run cover-merge",
-      "cover-unit": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report html --bail --include-all-sources --dir ./coverage-unit",
-      "cover-bdd": "./node_modules/.bin/istanbul cover ./node_modules/.bin/cucumberjs --report html --bail --include-all-sources --dir ./coverage-bdd",
-      "cover-merge": "node ./scripts/merge-coverage.js && rm -f coverage/coverage.json && ./node_modules/.bin/istanbul report html",
+    "cover-unit": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report html --bail --include-all-sources --dir ./coverage-unit",
+    "cover-bdd": "./node_modules/.bin/istanbul cover ./node_modules/.bin/cucumberjs --report html --bail --include-all-sources --dir ./coverage-bdd",
+    "cover-merge": "node ./scripts/merge-coverage.js && rm -f coverage/coverage.json && ./node_modules/.bin/istanbul report html",
     "check-cover": "./node_modules/.bin/istanbul check-coverage --statement 90",
     "remote-cover": "docker exec -i projectstructureproposal_web_1 npm run cover",
     "remote-check-cover": "docker exec -i projectstructureproposal_web_1 npm run check-cover",
@@ -18,8 +18,8 @@
     "setup": "ln -s node_modules/swagger-ui/dist docs",
     "update": "npm i",
     "test": "npm run test-unit && npm run test-bdd",
-      "test-unit": "./node_modules/.bin/mocha",
-      "test-bdd": "./node_modules/.bin/cucumberjs",
+    "test-unit": "./node_modules/.bin/mocha",
+    "test-bdd": "./node_modules/.bin/cucumberjs",
     "cibuild": "echo \"No cibuild script\";"
   },
   "pre-commit": [
@@ -40,15 +40,19 @@
     "redis": "^2.6.0",
     "request": "^2.72.0",
     "restify": "^4.1.0",
+    "swagger-editor-server": "^1.0.0",
+    "swagger-restify": "^1.0.1",
     "swagger-ui": "^2.1.4"
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "chalk": "^1.1.3",
     "cucumber": "^1.0.0",
     "istanbul": "^0.4.3",
     "mocha": "^2.5.3",
     "nock": "^8.0.0",
     "pre-commit": "^1.1.3",
+    "string": "^3.3.1",
     "supertest": "^1.2.0",
     "testrail-api": "^1.0.0"
   }

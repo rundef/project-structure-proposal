@@ -17,7 +17,7 @@ services:
       - "./package.json:/microservice/package.json"
       - "./scripts:/microservice/scripts"
       - "./src:/microservice/src"
-      - "./swagger.yml:/microservice/swagger.yml"
+      - "./api:/microservice/api"
       - "./.istanbul.yml:/microservice/.istanbul.yml"
       - "./docs:/microservice/docs"
       - "./test:/microservice/test"
