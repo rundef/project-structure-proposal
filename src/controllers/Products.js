@@ -1,5 +1,3 @@
-let request = require('request');
-
 class ProductsController {
   constructor(helpers) {
   }

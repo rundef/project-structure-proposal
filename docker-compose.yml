@@ -11,11 +11,14 @@ services:
     volumes:
       - "./config:/microservice/config"
       - "./coverage:/microservice/coverage"
+      - "./coverage-unit:/microservice/coverage-unit"
+      - "./coverage-bdd:/microservice/coverage-bdd"
       - "./features:/microservice/features"
       - "./package.json:/microservice/package.json"
       - "./scripts:/microservice/scripts"
       - "./src:/microservice/src"
       - "./swagger.yml:/microservice/swagger.yml"
+      - "./.istanbul.yml:/microservice/.istanbul.yml"
       - "./docs:/microservice/docs"
       - "./test:/microservice/test"
     ports:

@@ -7,15 +7,19 @@
   "scripts": {
     "start": "node .",
     "lint": "eslint src/**/*.js",
-    "cover": "./node_modules/.bin/istanbul cover ./node_modules/.bin/mocha ./node_modules/.bin/cucumberjs --report html --bail",
+    "cover": "npm run cover-unit && npm run cover-bdd && npm run cover-merge",
+      "cover-unit": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report html --bail --include-all-sources --dir ./coverage-unit",
+      "cover-bdd": "./node_modules/.bin/istanbul cover ./node_modules/.bin/cucumberjs --report html --bail --include-all-sources --dir ./coverage-bdd",
+      "cover-merge": "node ./scripts/merge-coverage.js && rm -f coverage/coverage.json && ./node_modules/.bin/istanbul report html",
     "check-cover": "./node_modules/.bin/istanbul check-coverage --statement 90",
     "remote-cover": "docker exec -i projectstructureproposal_web_1 npm run cover",
     "remote-check-cover": "docker exec -i projectstructureproposal_web_1 npm run check-cover",
     "bootstrap": "npm i",
     "setup": "ln -s node_modules/swagger-ui/dist docs",
     "update": "npm i",
-    "test": "./node_modules/.bin/mocha",
-    "test-bdd": "./node_modules/.bin/cucumberjs",
+    "test": "npm run test-unit && npm run test-bdd",
+      "test-unit": "./node_modules/.bin/mocha",
+      "test-bdd": "./node_modules/.bin/cucumberjs",
     "cibuild": "echo \"No cibuild script\";"
   },
   "pre-commit": [
