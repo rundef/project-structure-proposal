@@ -1,0 +1,50 @@
+{
+  "name": "project-structure-proposal",
+  "version": "1.0.0",
+  "description": "project-structure-proposal",
+  "main": "src/index.js",
+  "repository": "git://",
+  "scripts": {
+    "start": "node .",
+    "lint": "eslint src/**/*.js",
+    "cover": "./node_modules/.bin/istanbul cover ./node_modules/.bin/mocha ./node_modules/.bin/cucumberjs --report html --bail",
+    "check-cover": "./node_modules/.bin/istanbul check-coverage --statement 90",
+    "remote-cover": "docker exec -i projectstructureproposal_web_1 npm run cover",
+    "remote-check-cover": "docker exec -i projectstructureproposal_web_1 npm run check-cover",
+    "bootstrap": "npm i",
+    "setup": "ln -s node_modules/swagger-ui/dist docs",
+    "update": "npm i",
+    "test": "./node_modules/.bin/mocha",
+    "test-bdd": "./node_modules/.bin/cucumberjs",
+    "cibuild": "echo \"No cibuild script\";"
+  },
+  "pre-commit": [
+    "lint",
+    "remote-cover",
+    "remote-check-cover"
+  ],
+  "author": "SSENSE",
+  "license": "ISC",
+  "engines": {
+    "node": ">=6.2.0 <6.3.0"
+  },
+  "dependencies": {
+    "async": "^2.0.0-rc.6",
+    "config": "^1.21.0",
+    "graceful-fs": "^4.1.4",
+    "mongoose": "^4.4.20",
+    "redis": "^2.6.0",
+    "request": "^2.72.0",
+    "restify": "^4.1.0",
+    "swagger-ui": "^2.1.4"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "cucumber": "^1.0.0",
+    "istanbul": "^0.4.3",
+    "mocha": "^2.5.3",
+    "testrail-api": "^1.0.0",
+    "pre-commit": "^1.1.3",
+    "supertest": "^1.2.0"
+  }
+}

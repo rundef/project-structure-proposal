@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  web:
+    build: 
+      context: .
+      args:
+        - node_env=development
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - "./config:/microservice/config"
+      - "./coverage:/microservice/coverage"
+      - "./features:/microservice/features"
+      - "./package.json:/microservice/package.json"
+      - "./scripts:/microservice/scripts"
+      - "./src:/microservice/src"
+      - "./swagger.yml:/microservice/swagger.yml"
+      - "./docs:/microservice/docs"
+      - "./test:/microservice/test"
+    ports:
+      - "5000:5000"
+    links:
+      - redis
+      - mongo
+    command: nodemon
+
+  redis:
+    image: redis:latest
+    
+  mongo:
+    image: mongo:latest
