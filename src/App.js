@@ -3,7 +3,6 @@ let redis = require('redis');
 let path = require('path');
 let config = require('config');
 let fs = require('graceful-fs');
-let swaggerEditor = require("swagger-editor-server");
 
 
 class App {
@@ -21,11 +20,7 @@ class App {
     this.server = restify.createServer();
     this.server.use(restify.queryParser());
     this.server.use(restify.bodyParser());
-    /*
-    this.server.use(restify.CORS({
-      origins: ['*'],
-    }));
-  */
+
 
     /* istanbul ignore if */
     if(config.get('documentation')) {
@@ -51,28 +46,19 @@ class App {
       appRoot: path.resolve(__dirname, '..')
     };
 
-    //SwaggerRestify.create(swaggerConfig, (err, swaggerRestify) => {
-      //if (err) { throw err; }
 
-      //swaggerRestify.register(this.server);
-
-      this.server.listen(this.port, () => {
-        /* istanbul ignore if */
-        if(!this.silent) {
-          console.log('microservice server listening at %s', this.server.url);
-        }
-      });
-    //});
+    this.server.listen(this.port, () => {
+      /* istanbul ignore if */
+      if(!this.silent) {
+        console.log('microservice server listening at %s', this.server.url);
+      }
+    });
 
 
     return this;
   }
 
   serveDocumentation() {
-    this.server.get('/edit', function (req, res) {
-      swaggerEditor.edit('./docs/swagger.yaml');
-      res.send('Editing mode...');
-    });
     /*
     this.server.get(/swagger.yaml/, restify.serveStatic({
       directory: path.resolve(__dirname, '..', 'api', 'swagger'),
